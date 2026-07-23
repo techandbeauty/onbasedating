@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OnBase — The Next Love Story Is Yours</title>
+<meta name="description" content="OnBase is a voice-first dating app for military, veterans, and DoD personnel. No photos. No swiping. Real connection first.">
+<meta property="og:title" content="OnBase — The Next Love Story Is Yours">
+<meta property="og:description" content="A voice-first dating experience built for those who serve. Fall for someone's soul before you ever see their face.">
+<meta property="og:type" content="website">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Dancing+Script:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+
+<section class="hero">
+  <!-- ═══ BACKGROUND VIDEO ═══ -->
+  <div class="hero-bg">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto">
+      <source src="https://res.cloudinary.com/didqb05ko/video/upload/c_fill,ar_16:9,g_center/f_auto,q_auto/48hrs_of_qt_mini_film_tx04i9" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <!-- ═══ NAV ═══ -->
+  <nav>
+    <div class="logo">On<em>Base</em></div>
+    <div class="nav-center">
+      <a href="#experience">The Experience</a>
+      <a href="#manifesto">Manifesto</a>
+      <a href="#journal">Journal</a>
+    </div>
+    <a href="#waitlist" class="nav-btn">Join The Waitlist</a>
+  </nav>
+
+  <!-- ═══ HERO CONTENT ═══ -->
+  <div class="hero-content">
+    <div class="hero-left">
+      <h1 class="hero-headline">
+        The next<br>
+        love story<br>
+        <em>is yours.</em>
+      </h1>
+      <p class="hero-subtitle">
+        A new kind of dating.<br>
+        Built for real connection.
+      </p>
+      <p class="hero-script">Coming Soon</p>
+    </div>
+
+    <div class="hero-right">
+      <p>OnBase is more than<br>just an app. It's a full<br>dating experience.</p>
+      <a href="#" class="watch-film" id="watchFilmBtn">
+        <span class="play-btn">
+          <svg viewBox="0 0 10 12"><path d="M0 0 L10 6 L0 12 Z"/></svg>
+        </span>
+        Watch the Film
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══ WAITLIST CARD ═══ -->
+  <div class="waitlist-wrap" id="waitlist">
+    <div class="waitlist">
+      <!-- Default form view -->
+      <div id="formView">
+        <h2>Be the first to know.</h2>
+        <p class="waitlist-sub">Join the waitlist for early access.</p>
+
+        <form id="onbaseForm" novalidate>
+          <div class="row">
+            <input type="text" id="fn" name="firstName" placeholder="First Name" required autocomplete="given-name" maxlength="50">
+            <input type="text" id="ln" name="lastName" placeholder="Last Name" required autocomplete="family-name" maxlength="50">
+          </div>
+          <input type="email" id="em" name="email" placeholder="Email Address" required autocomplete="email" maxlength="100">
+          <div class="row">
+            <select id="interest" name="interest" required>
+              <option value="" disabled selected>I'm interested in</option>
+              <option value="women">Meeting women</option>
+              <option value="men">Meeting men</option>
+              <option value="both">Meeting anyone</option>
+              <option value="undecided">Still figuring it out</option>
+            </select>
+            <select id="affiliation" name="affiliation" required>
+              <option value="" disabled selected>My status</option>
+              <option value="active_duty">Active Duty Military</option>
+              <option value="veteran">Veteran</option>
+              <option value="reservist">Reservist / Guard</option>
+              <option value="dod_cleared">DoD / Cleared Personnel</option>
+              <option value="first_responder">First Responder</option>
+              <option value="military_spouse">Military Spouse</option>
+              <option value="civilian">Civilian</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <!-- reCAPTCHA v2 checkbox -->
+          <div id="recaptchaWrap" style="display:flex;justify-content:center;margin:.4rem 0">
+            <div class="g-recaptcha" data-sitekey="6LecBLQsAAAAAK4xX8k4bflfz2od7C8_VFu_ETuT" data-theme="dark"></div>
+          </div>
+          <div class="hp" aria-hidden="true"><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
+          <button type="submit" id="subBtn">Join The Waitlist</button>
+        </form>
+
+        <div class="f-err" id="fErr"></div>
+        <p class="f-privacy">We respect your privacy. No spam, ever.</p>
+      </div>
+
+      <!-- ═══ ELIGIBLE: Welcome confirmation ═══ -->
+      <div class="ty-screen" id="tyScreen">
+        <div class="ty-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+        <h2>Welcome in, <span class="ty-name" id="tyName"></span>.</h2>
+        <p class="ty-body">You're officially on the list. We'll reach out to <strong id="tyEmail"></strong> when OnBase goes live.</p>
+        <div class="ty-next">
+          <div class="ty-next-title">What happens next</div>
+          <div class="ty-step"><div class="ty-num">1</div><p>You're locked in — your spot on the waitlist is saved</p></div>
+          <div class="ty-step"><div class="ty-num">2</div><p>This summer, we'll email you the download link the moment we go live</p></div>
+          <div class="ty-step"><div class="ty-num">3</div><p>Create your voice intro and step into your first connection</p></div>
+        </div>
+        <p class="ty-script">See you soon.</p>
+      </div>
+
+      <!-- ═══ INELIGIBLE: Not available yet ═══ -->
+      <div class="ty-screen" id="tyIneligible">
+        <div class="ty-check" style="border-color:var(--gold)"><svg viewBox="0 0 24 24" style="stroke:var(--gold)"><path d="M12 9v4m0 4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" fill="none" stroke-width="1.5"/></svg></div>
+        <h2>We appreciate you, <span class="ty-name" id="tyNameIneligible"></span>.</h2>
+        <p class="ty-body">OnBase is currently built exclusively for military, veterans, and DoD personnel. This version of the app isn't available to the general public yet — but we're working on expanding.</p>
+        <div class="ty-next">
+          <div class="ty-next-title">You're not forgotten</div>
+          <div class="ty-step"><div class="ty-num">1</div><p>We saved your info so you won't have to sign up again</p></div>
+          <div class="ty-step"><div class="ty-num">2</div><p>When we open OnBase to everyone, you'll be first to know</p></div>
+          <div class="ty-step"><div class="ty-num">3</div><p>In the meantime, share this page with anyone who serves</p></div>
+        </div>
+        <p class="ty-script">We'll be in touch.</p>
+      </div>
+
+      <!-- ═══ DUPLICATE ═══ -->
+      <div class="ty-screen" id="tyDuplicate">
+        <div class="ty-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+        <h2>Already here, <span class="ty-name" id="tyNameDup"></span>.</h2>
+        <p class="ty-body">We already have your info. Sit tight — we'll reach out this summer when OnBase goes live.</p>
+        <p class="ty-script">See you soon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-logo">On<em>Base</em></div>
+  <div class="footer-tagline">Built on intention. Rooted in reality. Made for you.</div>
+  <div class="footer-social">
+    <a href="#" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2M12 0C8.7 0 8.3 0 7.1.1c-1.3.1-2.1.3-2.9.6-.8.3-1.5.7-2.1 1.4C1.4 2.7 1 3.4.7 4.2.4 5 .2 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.1.6 2.9.3.8.7 1.5 1.4 2.1.6.6 1.3 1.1 2.1 1.4.8.3 1.6.5 2.9.6 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c1.3-.1 2.1-.3 2.9-.6.8-.3 1.5-.7 2.1-1.4.6-.6 1.1-1.3 1.4-2.1.3-.8.5-1.6.6-2.9.1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.1-.6-2.9-.3-.8-.7-1.5-1.4-2.1C21.3 1.4 20.6 1 19.8.7 19 .4 18.2.2 16.9.1 15.7 0 15.3 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2S15.4 5.8 12 5.8zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm7.8-10.4c0 .8-.6 1.4-1.4 1.4s-1.4-.6-1.4-1.4.6-1.4 1.4-1.4 1.4.6 1.4 1.4z"/></svg>
+    </a>
+    <a href="#" aria-label="TikTok">
+      <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/></svg>
+    </a>
+    <a href="#" aria-label="X">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+  </div>
+</footer>
+
+<!-- ═══ VIDEO MODAL ═══ -->
+<div class="video-modal" id="videoModal" role="dialog" aria-label="OnBase film">
+  <button class="video-modal-close" id="videoModalClose" aria-label="Close video">✕</button>
+  <div class="video-modal-content">
+    <div class="video-modal-placeholder" id="videoPlaceholder">
+      <h3>Our film is on the way.</h3>
+      <p>We're putting the finishing touches on our launch film — a glimpse into the kind of love OnBase is built for. Check back soon.</p>
+      <p class="pl-script">Coming Summer 2026</p>
+    </div>
+    <!-- When you have a brand film, replace the placeholder above with:
+    <video controls autoplay>
+      <source src="https://res.cloudinary.com/didqb05ko/video/upload/onbase_film.mp4" type="video/mp4">
+    </video>
+    -->
+  </div>
+</div>
+
+<!-- ═══ APP LOGIC ═══ -->
+<script type="module" src="app.js"></script>
+</body>
+</html>
