@@ -21,8 +21,7 @@ const firebaseConfig = {
 // Firebase is loaded from a CDN and can fail (ad blockers, privacy browsers,
 // offline use, or restrictive networks commonly block gstatic.com/firebase
 // domains). If this throws unguarded, it kills the rest of this script —
-// including the intro Skip button — leaving the site stuck on a black
-// screen with no way to interact. Keep it optional so the page still works.
+// including the video modal and nav. Keep it optional so the page still works.
 let db = null;
 try {
   firebase.initializeApp(firebaseConfig);
@@ -37,7 +36,8 @@ try {
 // ---------- RESPONSIVE VIDEO ORIENTATION ----------
 // Source video is shot vertically (portrait). On desktop/web we rotate it
 // 90° via a Cloudinary transformation so it plays horizontally and fills
-// a wide hero; on mobile we serve it in its natural vertical orientation.
+// the wide hero background; on mobile we serve it in its natural vertical
+// orientation.
 const CLOUD_NAME = 'didqb05ko';
 const VIDEO_VERSION = 'v1788225152';
 const VIDEO_PUBLIC_ID = 'onbase_promo_video_axcoye';
@@ -49,81 +49,66 @@ function cloudinaryUrl(transform){
 const DESKTOP_VIDEO_URL = cloudinaryUrl('a_90,f_auto,q_auto'); // rotated to landscape
 const MOBILE_VIDEO_URL = cloudinaryUrl('f_auto,q_auto');       // natural vertical
 
-const responsiveVideos = [
-  document.getElementById('introVideo'),
-  document.getElementById('heroVideo')
-].filter(Boolean);
-
+const heroVideo = document.getElementById('heroVideo');
 const mobileQuery = window.matchMedia('(max-width: 760px)');
 
-function applyResponsiveVideoSources(){
+function applyResponsiveVideoSource(){
+  if (!heroVideo) return;
   const url = mobileQuery.matches ? MOBILE_VIDEO_URL : DESKTOP_VIDEO_URL;
-  responsiveVideos.forEach((video) => {
-    const source = video.querySelector('source');
-    if (!source || source.getAttribute('src') === url) return;
-    const wasPlaying = !video.paused && !video.ended;
-    source.setAttribute('src', url);
-    video.load();
-    if (wasPlaying) video.play().catch(() => {});
-  });
+  const source = heroVideo.querySelector('source');
+  if (!source || source.getAttribute('src') === url) return;
+  const wasPlaying = !heroVideo.paused && !heroVideo.ended;
+  source.setAttribute('src', url);
+  heroVideo.load();
+  if (wasPlaying) heroVideo.play().catch(() => {});
 }
 
-applyResponsiveVideoSources();
-mobileQuery.addEventListener('change', applyResponsiveVideoSources);
+applyResponsiveVideoSource();
+mobileQuery.addEventListener('change', applyResponsiveVideoSource);
 
-// ---------- INTRO SEQUENCE ----------
-const intro = document.getElementById('intro');
-const introVideo = document.getElementById('introVideo');
-const unmuteBtn = document.getElementById('unmuteBtn');
-const unmuteLabel = document.getElementById('unmuteLabel');
-const skipBtn = document.getElementById('skipBtn');
-
-const INTRO_KEY = 'onbase_intro_seen';
-
-function leaveIntro(){
-  intro.classList.add('leaving');
-  introVideo.pause();
-  setTimeout(() => { intro.style.display = 'none'; }, 1100);
-  sessionStorage.setItem(INTRO_KEY, '1');
+if (heroVideo) {
+  heroVideo.addEventListener('loadeddata', () => heroVideo.classList.add('loaded'));
 }
 
-// Skip the full intro if they've already seen it this session
-if (sessionStorage.getItem(INTRO_KEY)) {
-  intro.style.display = 'none';
-} else {
-  introVideo.addEventListener('ended', leaveIntro);
-}
-
-skipBtn.addEventListener('click', leaveIntro);
-
-unmuteBtn.addEventListener('click', () => {
-  introVideo.muted = !introVideo.muted;
-  unmuteLabel.textContent = introVideo.muted ? 'Tap for sound' : 'Mute';
-});
-
-// ---------- FILM MODAL (re-watch on the landing page itself) ----------
-const filmModal = document.getElementById('filmModal');
+// ---------- FILM MODAL ----------
+const videoModal = document.getElementById('videoModal');
 const modalVideo = document.getElementById('modalVideo');
 const watchFilmBtn = document.getElementById('watchFilmBtn');
-const modalClose = document.getElementById('modalClose');
+const videoModalClose = document.getElementById('videoModalClose');
 
-watchFilmBtn.addEventListener('click', () => {
-  filmModal.classList.add('open');
+function openVideoModal(e){
+  if (e) e.preventDefault();
+  videoModal.classList.add('show');
+  document.body.style.overflow = 'hidden';
   modalVideo.currentTime = 0;
-  modalVideo.play();
-});
-function closeModal(){
-  filmModal.classList.remove('open');
+  modalVideo.play().catch(() => {});
+}
+function closeVideoModal(){
+  videoModal.classList.remove('show');
+  document.body.style.overflow = '';
   modalVideo.pause();
 }
-modalClose.addEventListener('click', closeModal);
-filmModal.addEventListener('click', (e) => { if (e.target === filmModal) closeModal(); });
+watchFilmBtn.addEventListener('click', openVideoModal);
+videoModalClose.addEventListener('click', closeVideoModal);
+videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeVideoModal(); });
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && videoModal.classList.contains('show')) closeVideoModal();
+});
+
+// ---------- SELECT FILLED STATE (for placeholder styling) ----------
+const affiliationSelect = document.getElementById('affiliation');
+affiliationSelect.addEventListener('change', function(){
+  if (this.value) this.classList.add('filled');
+  else this.classList.remove('filled');
+});
 
 // ---------- FORM SUBMISSION ----------
 const form = document.getElementById('waitlistForm');
 const submitBtn = document.getElementById('submitBtn');
 const formError = document.getElementById('formError');
-const successState = document.getElementById('successState');
+const formView = document.getElementById('formView');
+const tyScreen = document.getElementById('tyScreen');
+const tyName = document.getElementById('tyName');
 
 function showError(msg){
   formError.textContent = msg;
@@ -167,8 +152,9 @@ form.addEventListener('submit', async (e) => {
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     });
 
-    form.style.display = 'none';
-    successState.classList.add('visible');
+    tyName.textContent = firstName;
+    formView.style.display = 'none';
+    tyScreen.classList.add('show');
   } catch (err) {
     console.error(err);
     submitBtn.disabled = false;

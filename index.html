@@ -5,171 +5,137 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>OnBase — Connection Before Appearance</title>
 <meta name="description" content="A voice-first dating app for active duty military, veterans, DoD employees, and federal first responders. Hear who they are before you see their face." />
+<meta property="og:title" content="OnBase — Connection Before Appearance" />
+<meta property="og:description" content="A voice-first dating app for the military and federal community. Hear them first. See them when it's real." />
+<meta property="og:type" content="website" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Dancing+Script:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- ============ INTRO SEQUENCE ============ -->
-<div id="intro">
-  <div class="intro-mark">ONBASE</div>
-  <video id="introVideo" playsinline muted autoplay poster="assets/hero-poster.jpg">
-    <!-- Replace with your Cloudinary-hosted, H.264-transcoded MP4 -->
-    <source src="https://res.cloudinary.com/didqb05ko/video/upload/f_auto,q_auto/v1788225152/onbase_promo_video_axcoye.mp4" type="video/mp4">
-  </video>
-  <div class="intro-controls">
-    <button class="intro-btn" id="unmuteBtn" type="button">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" opacity="0" id="soundOnIcon"/><line x1="23" y1="9" x2="17" y2="15" id="soundOffIcon1"/><line x1="17" y1="9" x2="23" y2="15" id="soundOffIcon2"/></svg>
-      <span id="unmuteLabel">Tap for sound</span>
-    </button>
-    <button class="intro-btn" id="skipBtn" type="button">Skip</button>
-  </div>
-</div>
-
-<!-- ============ NAV ============ -->
-<header>
-  <div class="wordmark">OnBase<small>CONNECTION BEFORE APPEARANCE</small></div>
-  <nav class="links">
-    <a href="#how">How It Works</a>
-    <a href="#manifesto">Manifesto</a>
-    <a href="#waitlist">Eligibility</a>
-  </nav>
-  <a class="cta-nav" href="#waitlist">Join the Waitlist</a>
-</header>
-
-<!-- ============ HERO ============ -->
 <section class="hero">
-  <video id="heroVideo" autoplay muted loop playsinline poster="assets/hero-poster.jpg">
-    <source src="https://res.cloudinary.com/didqb05ko/video/upload/f_auto,q_auto/v1788225152/onbase_promo_video_axcoye.mp4" type="video/mp4">
-  </video>
-  <div class="scrim"></div>
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <div class="hero-tag">FOR THOSE WHO SERVE — COMING SOON</div>
-      <h1>Hear them first.<br><em>See them when it's real.</em></h1>
-      <p class="hero-sub">A dating app built for active duty, veterans, and the federal community — where you talk for days before you ever see a photo.</p>
+  <!-- ============ BACKGROUND VIDEO ============ -->
+  <div class="hero-bg">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
+      <source src="https://res.cloudinary.com/didqb05ko/video/upload/a_90,f_auto,q_auto/v1788225152/onbase_promo_video_axcoye.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <!-- ============ NAV ============ -->
+  <nav>
+    <div class="logo">OnBase</div>
+    <a href="#waitlist" class="nav-btn">Join the Waitlist</a>
+  </nav>
+
+  <!-- ============ HERO CONTENT ============ -->
+  <div class="hero-content">
+    <div class="hero-left">
+      <h1 class="hero-headline">Hear them<br>first.<br><em>See them when it's real.</em></h1>
+      <p class="hero-subtitle">A dating app built for active duty,<br>veterans, and the federal community.</p>
+      <p class="hero-script">Coming Soon</p>
     </div>
-    <div class="hero-aside">
-      <p>OnBase is more than an app. It's a different order of getting to know someone.</p>
-      <button class="watch-film" id="watchFilmBtn" type="button">
-        <span class="ring">▶</span> Watch the film
-      </button>
+
+    <div class="hero-right">
+      <p>OnBase is more than an app.<br>It's a different order of getting to know someone.</p>
+      <a href="#" class="watch-film" id="watchFilmBtn">
+        <span class="play-btn">
+          <svg viewBox="0 0 10 12"><path d="M0 0 L10 6 L0 12 Z"/></svg>
+        </span>
+        Watch the Film
+      </a>
     </div>
   </div>
-</section>
 
-<!-- ============ HOW IT WORKS ============ -->
-<section class="strip" id="how">
-  <div class="strip-inner">
-    <h2>Three stages. No photos until you've earned them.</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-name">STAGE ONE — COURTING</div>
-        <p>You're matched into a small pod. Voice notes only. No face, no name, no assumptions.</p>
+  <!-- ============ WAITLIST CARD ============ -->
+  <div class="waitlist-wrap" id="waitlist">
+    <div class="waitlist">
+
+      <div id="formView">
+        <h2>Be the first on base.</h2>
+        <p class="waitlist-sub">Join the waitlist for early access. Eligibility is limited to the military and federal community.</p>
+
+        <form id="waitlistForm" novalidate>
+          <div class="row">
+            <input type="text" id="firstName" name="firstName" placeholder="First Name" required autocomplete="given-name">
+            <input type="text" id="lastName" name="lastName" placeholder="Last Name" required autocomplete="family-name">
+          </div>
+
+          <input type="email" id="email" name="email" placeholder="Email Address" required autocomplete="email">
+
+          <select id="affiliation" name="affiliation" required>
+            <option value="" disabled selected>I'm affiliated as</option>
+            <option value="active_duty">Active Duty</option>
+            <option value="guard_reserve">National Guard / Reserve</option>
+            <option value="veteran">Veteran</option>
+            <option value="dod_federal_civilian">DoD / Federal Civilian</option>
+            <option value="federal_first_responder">Federal First Responder</option>
+          </select>
+
+          <textarea id="question" name="question" rows="3" maxlength="400" placeholder="What does a healthy relationship look like to you?" required></textarea>
+
+          <label class="consent">
+            <input type="checkbox" id="consent" name="consent" required>
+            <span>I confirm I fall into one of the categories above and agree to be contacted about OnBase early access. Full ID.me verification happens when the app launches — we don't collect any ID or service records here.</span>
+          </label>
+
+          <!-- honeypot -->
+          <div class="hp" aria-hidden="true">
+            <label for="companyWebsite">Leave blank</label>
+            <input type="text" id="companyWebsite" name="companyWebsite" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button type="submit" id="submitBtn">Join the Waitlist</button>
+        </form>
+
+        <div class="f-err" id="formError"></div>
+        <p class="f-privacy">We respect your privacy. No spam, ever.</p>
       </div>
-      <div class="step">
-        <div class="step-name">STAGE TWO — DATING</div>
-        <p>Structured voice dates and a real "beyond chat" moment — a movie night, a shared activity — while you're still just a voice.</p>
-      </div>
-      <div class="step">
-        <div class="step-name">STAGE THREE — REVEAL</div>
-        <p>Once you've both put in the time and agree it's real, you reveal together. Appearance last, on purpose.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ============ MANIFESTO ============ -->
-<section class="manifesto" id="manifesto">
-  <div class="eyebrow">THE MANIFESTO</div>
-  <p>"You've spent your career being judged in a fraction of a second. Here, someone has to listen to you for days before they ever get to look at you."</p>
-</section>
+      <div class="ty-screen" id="tyScreen">
+        <div class="ty-check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+        <h2>You're on the list, <span class="ty-name" id="tyName"></span>.</h2>
+        <p class="ty-body">We'll reach out at the email you gave us as soon as early access opens. Thank you for your service.</p>
 
-<!-- ============ WAITLIST ============ -->
-<section class="waitlist-section" id="waitlist">
-  <div class="waitlist-card">
-
-    <form id="waitlistForm" novalidate>
-      <h2>Be the first on base.</h2>
-      <p>Join the waitlist for early access. Eligibility is limited to the military and federal community.</p>
-
-      <!-- honeypot -->
-      <div class="hp" aria-hidden="true">
-        <label for="companyWebsite">Leave blank</label>
-        <input type="text" id="companyWebsite" name="companyWebsite" tabindex="-1" autocomplete="off">
-      </div>
-
-      <div class="field-row">
-        <div class="field">
-          <label for="firstName">First name</label>
-          <input type="text" id="firstName" name="firstName" placeholder="Jordan" required autocomplete="given-name">
+        <div class="ty-next">
+          <div class="ty-next-title">What happens next</div>
+          <div class="ty-step"><div class="ty-num">1</div><p><strong>Courting</strong> — you're matched into a small pod. Voice notes only. No face, no name, no assumptions.</p></div>
+          <div class="ty-step"><div class="ty-num">2</div><p><strong>Dating</strong> — structured voice dates and a real "beyond chat" moment, while you're still just a voice.</p></div>
+          <div class="ty-step"><div class="ty-num">3</div><p><strong>Reveal</strong> — once you've both put in the time and agree it's real, you reveal together.</p></div>
         </div>
-        <div class="field">
-          <label for="lastName">Last name</label>
-          <input type="text" id="lastName" name="lastName" placeholder="Rivera" required autocomplete="family-name">
-        </div>
+
+        <p class="ty-script">See you soon.</p>
       </div>
 
-      <div class="field field-full">
-        <label for="email">Email address</label>
-        <input type="email" id="email" name="email" placeholder="you@personal-email.com" required autocomplete="email">
-      </div>
-
-      <div class="field field-full">
-        <label for="affiliation">I'm affiliated as</label>
-        <select id="affiliation" name="affiliation" required>
-          <option value="" disabled selected>Select one</option>
-          <option value="active_duty">Active Duty</option>
-          <option value="guard_reserve">National Guard / Reserve</option>
-          <option value="veteran">Veteran</option>
-          <option value="dod_federal_civilian">DoD / Federal Civilian</option>
-          <option value="federal_first_responder">Federal First Responder</option>
-        </select>
-      </div>
-
-      <div class="field field-full">
-        <label for="question">What does a healthy relationship look like to you?</label>
-        <textarea id="question" name="question" rows="3" maxlength="400" placeholder="A couple of sentences is plenty…" required></textarea>
-      </div>
-
-      <label class="consent">
-        <input type="checkbox" id="consent" name="consent" required>
-        <span>I confirm I fall into one of the categories above and agree to be contacted about OnBase early access. Full ID.me verification happens when the app launches — we don't collect any ID or service records here.</span>
-      </label>
-
-      <button class="submit-btn" id="submitBtn" type="submit">Join the Waitlist</button>
-      <div class="form-msg error" id="formError"></div>
-      <p class="form-note">We respect your privacy. No spam, ever.</p>
-    </form>
-
-    <div class="success-state" id="successState">
-      <div class="ring-mark">✓</div>
-      <h2>You're on the list.</h2>
-      <p>We'll reach out at the email you gave us as soon as early access opens. Thank you for your service.</p>
     </div>
-
   </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
 <footer>
-  <div class="wordmark">OnBase</div>
-  <div class="foot-tag">BUILT FOR SERVICE. VERIFIED BY ID.ME. MADE FOR YOU.</div>
-  <div class="socials">
-    <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-    <a href="#" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 3c.3 2 1.7 3.6 4 3.9v2.7c-1.5 0-2.9-.4-4-1.2v6.5a5.5 5.5 0 1 1-4.7-5.4v2.8a2.7 2.7 0 1 0 2 2.6V3h2.7z"/></svg></a>
-    <a href="#" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h4.6l4 5.6L16.4 3H21l-6.7 8.2L21.4 21h-4.6l-4.4-6.1L6.8 21H2.2l7-8.6L3 3z"/></svg></a>
+  <div class="footer-logo">OnBase</div>
+  <div class="footer-tagline">BUILT FOR SERVICE. VERIFIED BY ID.ME. MADE FOR YOU.</div>
+  <div class="footer-social">
+    <a href="#" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2M12 0C8.7 0 8.3 0 7.1.1c-1.3.1-2.1.3-2.9.6-.8.3-1.5.7-2.1 1.4C1.4 2.7 1 3.4.7 4.2.4 5 .2 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.1.6 2.9.3.8.7 1.5 1.4 2.1.6.6 1.3 1.1 2.1 1.4.8.3 1.6.5 2.9.6 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c1.3-.1 2.1-.3 2.9-.6.8-.3 1.5-.7 2.1-1.4.6-.6 1.1-1.3 1.4-2.1.3-.8.5-1.6.6-2.9.1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.1-.6-2.9-.3-.8-.7-1.5-1.4-2.1C21.3 1.4 20.6 1 19.8.7 19 .4 18.2.2 16.9.1 15.7 0 15.3 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2S15.4 5.8 12 5.8zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm7.8-10.4c0 .8-.6 1.4-1.4 1.4s-1.4-.6-1.4-1.4.6-1.4 1.4-1.4 1.4.6 1.4 1.4z"/></svg>
+    </a>
+    <a href="#" aria-label="TikTok">
+      <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/></svg>
+    </a>
+    <a href="#" aria-label="X">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
   </div>
 </footer>
 
-<!-- ============ FILM MODAL ============ -->
-<div class="modal-overlay" id="filmModal">
-  <div class="modal-video-wrap">
-    <button class="modal-close" id="modalClose" type="button">✕</button>
+<!-- ============ VIDEO MODAL ============ -->
+<div class="video-modal" id="videoModal" role="dialog" aria-label="OnBase film">
+  <button class="video-modal-close" id="videoModalClose" aria-label="Close video">✕</button>
+  <div class="video-modal-content">
     <video id="modalVideo" controls playsinline>
       <source src="https://res.cloudinary.com/didqb05ko/video/upload/f_auto,q_auto/v1788225152/onbase_promo_video_axcoye.mp4" type="video/mp4">
     </video>
