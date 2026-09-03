@@ -18,10 +18,20 @@ const firebaseConfig = {
   measurementId: "G-7JX7REMXC0"
 };
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-if (firebase.analytics) {
-  firebase.analytics();
+// Firebase is loaded from a CDN and can fail (ad blockers, privacy browsers,
+// offline use, or restrictive networks commonly block gstatic.com/firebase
+// domains). If this throws unguarded, it kills the rest of this script —
+// including the intro Skip button — leaving the site stuck on a black
+// screen with no way to interact. Keep it optional so the page still works.
+let db = null;
+try {
+  firebase.initializeApp(firebaseConfig);
+  db = firebase.firestore();
+  if (firebase.analytics) {
+    firebase.analytics();
+  }
+} catch (err) {
+  console.error('Firebase failed to initialize — waitlist submissions will be disabled.', err);
 }
 
 // ---------- RESPONSIVE VIDEO ORIENTATION ----------
@@ -141,6 +151,7 @@ form.addEventListener('submit', async (e) => {
   if (!affiliation) return showError('Please select your affiliation.');
   if (!question) return showError('Please share a quick answer before joining.');
   if (!consent) return showError('Please confirm eligibility to continue.');
+  if (!db) return showError('Something went wrong on our end — please try again in a moment.');
 
   submitBtn.disabled = true;
   submitBtn.textContent = 'Joining…';
