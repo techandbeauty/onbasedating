@@ -343,6 +343,91 @@ footer{
 .footer-social a:hover{color:var(--cream)}
 .footer-social svg{width:18px;height:18px;fill:currentColor}
 
+/* ============ FOOTER LINKS (Privacy / Support) ============ */
+.footer-links{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;justify-content:center}
+.footer-links a{
+  font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--cream-dim);text-decoration:none;transition:color .3s;
+}
+.footer-links a:hover{color:var(--gold)}
+
+/* ============ DOC PAGES (Privacy / Support) ============ */
+.doc-page{
+  padding:7rem 1.5rem 4rem;
+  min-height:100vh;
+}
+.doc-container{
+  max-width:720px;margin:0 auto;
+}
+.doc-eyebrow{
+  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);font-weight:500;margin-bottom:.75rem;
+}
+.doc-page h1{
+  font-family:var(--serif);font-weight:500;font-size:clamp(2rem,5vw,2.75rem);
+  color:var(--cream);margin:0 0 .5rem;
+}
+.doc-meta{
+  font-size:.8rem;color:var(--cream-muted);
+  padding-bottom:2rem;margin-bottom:2.5rem;
+  border-bottom:1px solid var(--card-border);
+}
+.doc-page h2{
+  font-family:var(--serif);font-weight:500;font-size:1.4rem;
+  color:var(--gold);margin:2.75rem 0 1rem;
+}
+.doc-page p, .doc-page li{
+  font-size:.98rem;line-height:1.75;color:var(--cream-dim);
+}
+.doc-page p{margin:0 0 1rem}
+.doc-page ul{margin:0 0 1rem;padding-left:1.3rem}
+.doc-page li{margin-bottom:.5rem}
+.doc-page a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(212,184,150,0.35)}
+.doc-page a:hover{border-color:var(--gold)}
+
+.doc-callout{
+  display:flex;gap:.9rem;align-items:flex-start;
+  background:var(--card);border:1px solid var(--card-border);
+  border-radius:14px;padding:1.2rem 1.4rem;margin:1.75rem 0;
+}
+.doc-callout .icon{font-size:1.1rem;line-height:1.6}
+.doc-callout strong{color:var(--cream)}
+.doc-callout p{margin:.25rem 0 0;font-size:.92rem;color:var(--cream-dim)}
+
+.doc-table{width:100%;border-collapse:collapse;margin:0 0 1.5rem;font-size:.92rem}
+.doc-table th,.doc-table td{
+  text-align:left;padding:.7rem .8rem;border-bottom:1px solid var(--card-border);vertical-align:top;
+}
+.doc-table th{
+  color:var(--cream-muted);font-weight:500;font-size:.72rem;
+  text-transform:uppercase;letter-spacing:.06em;
+}
+.doc-table td{color:var(--cream-dim)}
+
+.doc-support-card{
+  background:var(--card);border:1px solid var(--card-border);border-radius:14px;
+  padding:1.5rem 1.6rem;margin:1.75rem 0;
+}
+.doc-support-card p{margin:.4rem 0 0}
+.doc-support-card a.doc-button{
+  display:inline-block;margin-top:.7rem;
+  background:var(--gold);color:var(--bg);
+  padding:.65rem 1.3rem;border-radius:8px;
+  font-weight:600;font-size:.9rem;text-decoration:none;border:none;
+}
+.doc-support-card a.doc-button:hover{opacity:.88}
+
+details.doc-faq{border-bottom:1px solid var(--card-border);padding:1rem 0}
+details.doc-faq:first-of-type{border-top:1px solid var(--card-border)}
+details.doc-faq summary{
+  font-family:var(--serif);font-size:1.05rem;color:var(--cream);cursor:pointer;
+}
+details.doc-faq p{margin-top:.6rem;color:var(--cream-dim);font-size:.92rem}
+
+@media(max-width:620px){
+  .doc-page{padding:6rem 1.25rem 3rem}
+}
+
 /* ============ RESPONSIVE ============ */
 @media(max-width:900px){
   nav{padding:1.5rem 1.5rem}
